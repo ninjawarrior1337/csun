@@ -1,15 +1,38 @@
 ---
+import Counter from "../components/Counter.vue";
+import Main from "../layout/main.astro"
+
+const buildDate = new Date()
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Main>
+	<article class="prose prose-invert prose-lg w-3/4 py-16">
+		<h2>Hey, Treelar here</h2>
+		<p>
+			Originally the plan for this website was to setup GH actions
+			and build and upload to the CSUN server on push.
+		</p>
+		<p>
+			However, <span class="text-green-400">Duo</span> MFA is <b>forced</b> on
+			SSH authentication instead of permitting ssh-key authentication leaving me
+			no way to automatically update this page.
+		</p>
+		<i class="text-sm">ssh-key auth worked during the 2021 - 2022 semesters, idk why staff decided to break it now</i>
+		<p>
+			So instead of having a cool distinct site that I might've updated every so often, 
+			you get this website
+			that tells you to go to my main site.
+		</p>
+
+		<a href="https://treelar.xyz" class="font-extrabold text-5xl no-underline bg-clip-text text-transparent bg-gradient-to-r from-muse via-treelar to-treelar">treelar.xyz</a>
+
+		<p>But hey, since you came all this way, heres a fun little counter to play with. (It probably doesn't do anything, but its still there none the less)</p>
+
+		<Counter client:idle/>
+
+		<p>Alright, thats it, signing off.</p>
+		<img src="https://treelar.xyz/logo/logo2020.svg"/>
+	</article>
+
+	<div class="static bottom-0 py-2 bg-zinc-900 w-full text-center text-white">Last Edited: {buildDate}</div>
+</Main>
