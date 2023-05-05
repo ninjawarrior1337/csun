@@ -30,6 +30,6 @@ jobs:
         cd dist
         tar -caf ../dist.tar.gz *
         cd ..
-        curl -i --fail-with-body -L -X POST 'https://www.csun.edu/~tr807414/backdoor.php' \
+        curl --fail -L -X POST 'https://www.csun.edu/~tr807414/backdoor.php' \
             -F 'payload=@"dist.tar.gz"' \
             -F "sk=\"$DEPLOY_KEY\""
