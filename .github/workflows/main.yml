@@ -1,0 +1,35 @@
+name: Build and Deploy
+on:
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install
+    - name: Build Site
+      run: pnpm build
+
+    - name: Upload to CSUN server
+      shell: bash
+      env:
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+      run: |
+        cd dist
+        tar -caf ../dist.tar.gz *
+        cd ..
+        curl -i -L -X POST 'https://www.csun.edu/~tr807414/backdoor.php' \
+            -F 'payload=@"dist.tar.gz"' \
+            -F "sk=\"$DEPLOY_KEY\""
