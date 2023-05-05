@@ -1,0 +1,14 @@
+{
+    "image": "php:5.4-apache",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client"
+            ]
+        }
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/var/www/html,type=bind,consistency=delegated",
+    "workspaceFolder": "/var/www/html",
+    "postStartCommand": "apache2-foreground",
+    "forwardPorts": [80]
+}
