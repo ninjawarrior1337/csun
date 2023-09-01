@@ -1,0 +1,59 @@
+---
+import Counter from "../components/Counter.vue";
+import Main from "../layout/main.astro"
+
+const buildDate = "Fri May 05 2023 09:04:40 GMT+0000 (Coordinated Universal Time)"
+---
+
+<Main>
+	<article class="prose prose-invert prose-lg w-3/4 py-16">
+		<h2>Hey, Treelar here</h2>
+		<p>
+			Originally the plan for this website was to setup GH actions
+			and build and upload to the CSUN server on push.
+		</p>
+		<p>
+			However, <span class="text-green-400">Duo</span> MFA is <b>forced</b> on
+			SSH authentication instead of permitting ssh-key authentication leaving me
+			no way to automatically update this page.
+		</p>
+		<i class="text-sm">ssh-key auth worked during the 2021 - 2022 semesters, idk why staff decided to break it now</i>
+		<p>
+			So instead of having a cool distinct site that I might've updated every so often, 
+			you get this website
+			that tells you to go to my main site.
+		</p>
+
+		<a href="https://treelar.xyz" class="font-extrabold text-5xl no-underline bg-clip-text text-transparent bg-gradient-to-r from-muse via-treelar to-treelar">treelar.xyz</a>
+
+		<p>But hey, since you came all this way, heres a fun little counter to play with. (It probably doesn't do anything, but its still there none the less)</p>
+
+		<Counter client:idle/>
+
+		<p>Alright, thats it, signing off.</p>
+		<img src="https://treelar.xyz/logo/logo2020.svg"/>
+
+		<h2>Update: 5/5/23</h2>
+
+		<p>I GOT DEPLOYMENTS WORKING</p>
+		<p>
+			Using a what I'm almost sure is a very insecure PHP script, I can now use GH to deploy to this server
+			bypassing both the login and 2FA requirements.
+		</p>
+		<p>
+			This site is open source here:
+			<a href="https://github.com/ninjawarrior1337/csun" target="_blank">https://github.com/ninjawarrior1337/csun</a>
+			along with the PHP used to `backdoor` the server.
+		</p>
+		<p>
+			This and all pages from now on will be archived including this funny letter about how I thought remote deployment
+			was gonna be impossible will be under the directory /proto.
+
+			Look forward to seeing stuff here soon.
+		</p>
+
+		<p>Signing off.</p>
+	</article>
+
+	<div class="static bottom-0 py-2 bg-zinc-900 w-full text-center text-white">Last Edited: {buildDate}</div>
+</Main>
